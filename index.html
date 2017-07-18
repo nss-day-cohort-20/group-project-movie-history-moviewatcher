@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Movie History</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  	<div class="container">
+  		<div class="row">
+  			<div class="col-sm-8">
+      		<div class="search-methods">
+       	 		<input id="search-movies" type="text" class="form-control" placeholder="Find New Movies or Search Your Own">
+        		<ul>
+        			<li class="text-right"><a id="search-new-movies" href="#">Find New Movies</a></li>
+        			<li class="text-right"><a id="search-saved-movies" href="#">Search Your Movies</a></li>
+        		</ul>
+      		</div><!-- /.search-methods -->
+      	</div><!-- /.col-sm-8 -->
+      	<div class="col-sm-4">
+      	  <p class="text-right logout"><a id="logout" href="#">Logout</a></p>
+      	</div><!-- /.col-sm-4 -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+  </nav>
+  <div class="container">
+  	<h1>Movie History</h1>
+  	<div clas="row">
+  		<div class="col-sm-3">
+  			<div class="show-bar">
+  				<p class="text-center"><a id="show-watchlist" href="#">Show Watchlist</a></p>
+  			</div>
+  		</div>
+  		<div class="col-sm-3">
+  			<div class="show-bar">
+  				<p class="text-center"><a id="show-watched" href="#">Show Watched</a></p>
+  			</div>
+  		</div>
+  	</div><!-- /.row -->
+  </div><!-- /.container -->
+  <div id="DOM-element" class="container">
+  	<div class="row">
+
+  		<div class="col-sm-4"><!-- creates row of three cards -->
+  			<div class="col-sm-12 movie-card"><!-- inside card so there is auto margin -->
+  				<div class="row"><!-- row for poster and movie info -->
+  					<div class="col-sm-4 poster"></div><!-- poster -->
+  					<div class="col-sm-8 movie-info"><!-- movie info -->
+  						<h3>Title</h3>
+  						<p>Year</p>
+  						<p>Actors</p>
+  						<div class="starsNstuff"></div><!-- area for stars and links -->
+  					</div><!-- /.col-sm-8 -->
+  				</div><!-- /.row -->
+  			</div><!-- /.col-sm-12 -->
+  		</div><!-- /.col-sm-4 -->
+
+  	</div><!-- /.row -->
+  </div><!-- /.container -->
+	<script src="dist/app.js"></script>
+</body>
+</html>
