@@ -1,0 +1,7 @@
+lib/node_modules
+dist/app.js
+css/
+lib/.sass-cache/
+images/.DS_Store
+javascripts/firebaseGetter.js
+javascripts/mdbGetter.js

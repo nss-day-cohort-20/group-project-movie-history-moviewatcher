@@ -1,0 +1,33 @@
+{
+  "name": "moviehistory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-day-cohort-20/promises-101.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nss-day-cohort-20/promises-101/issues"
+  },
+  "homepage": "https://github.com/nss-day-cohort-20/promises-101#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-handlebars": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "handlebars": "^4.0.10",
+    "hbsfy": "^2.7.0",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "matchdep": "^1.0.1"
+  }
+}
