@@ -4,6 +4,21 @@ let $ = require('jquery');
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
+//in progress
+
+module.exports.buildMovieObj = () => {
+	let movieObj = {
+		// title: `$(this).data("title")`,
+		// year:
+		// cast:
+		// userId:
+		// movieId:
+		// imageURL:
+	};
+	// console.log($(this).data("title"));
+	return movieObj;
+};
+
 module.exports.searchForNewMovies = function () {
 	console.log("search working");
     var moviesToUse = [];
@@ -30,3 +45,4 @@ $("#search-new-movies").click(function() {
 	// console.log("search button working", moviesToUse);
 	module.exports.searchForNewMovies();
 });
+
