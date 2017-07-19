@@ -1,0 +1,59 @@
+@import "../lib/node_modules/bootstrap/scss/bootstrap.scss";
+
+/***** nav *****/
+
+#search-movies {
+	margin-top: 25px;
+}
+
+.logout {
+	margin-top: 30px;
+	margin-right: 25px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+/***** show lists bar *****/
+
+.show-bar {
+	height: 50px;
+	border: 1px solid #000;
+	margin-right: 0;
+}
+
+	p {
+		margin-top: 13px;
+	}
+
+h1 {
+	margin: 10px 20px 30px 20px;
+}
+
+/***** movie display *****/
+
+#DOM-element {
+	margin-top: 30px;
+}
+
+.movie-card {
+	height: 250px;
+	border: 1px solid #000;
+	padding-top: 25px;
+	position: relative;
+}
+
+.movie-info {
+	height: 250px;
+}
+
+.starsNstuff {
+	height: 50px;
+	border: 1px solid #000;
+	position: absolute;
+	bottom: 26px;
+	right: -1px;
+	width: 100%;
+}
+
