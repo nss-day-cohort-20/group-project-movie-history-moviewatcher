@@ -1,19 +1,32 @@
-'use strict';
+"use strict";
 
 let $ = require('jquery');
-let songCon = require('./movie-factory');
-let searchNew = document.getElementById("search-new-movies");
+let movieFactory = require('./movie-factory.js');
+let builder = require('./template-builder.js');
 
-module.exports.loadSongsToDom = () => {
-  songCon.getMovies()
-  .then( (movieData) => {
-  	console.log("results?", movieData);
-    // let songList = templates.makeSongList(songData);
-    // $container.html(songList);
-  });
+module.exports.searchForNewMovies = function () {
+	console.log("search working");
+    var moviesToUse = [];
+    movieFactory.getMovies()
+        .then((movies) => {
+            moviesToUse = movies;
+            let promiseArr = [];
+            movies.results.forEach((movie) => {
+                promiseArr.push(movieFactory.getCast(movie.id));
+            });
+            return Promise.all(promiseArr);
+        })
+        .then((cast)=>{
+        	console.log("moviesToUse", moviesToUse);
+        	for(let i = 0; i < 20; i++) {
+        		moviesToUse.results[i].cast = cast[i];
+        	}
+            // templatebuilder!!!!
+        });
 };
 
-$("search-new-movies").click(function() {
-	console.log("search button working");
-	module.exports.loadSongsToDom();
+
+$("#search-new-movies").click(function() {
+	// console.log("search button working", moviesToUse);
+	module.exports.searchForNewMovies();
 });
