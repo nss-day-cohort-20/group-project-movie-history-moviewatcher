@@ -48,21 +48,25 @@ $(document).on("click", ".add-watchlist", function() {
 		castArr.push($(this).text());
 	});
 	let poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
-	//toggle "add to watch list" to "watched"
 	movieFactory.addMovie(movieController.buildMovieObj(title, year, movieId, currentUser, castArr, poster_path));
+	$(`#${movieId}-add-watchlist`).addClass("hideIt");
+	$(`#${movieId}-star-container`).removeClass("hideIt");
+	console.log("is this movie id", movieId);
+
 });
 
 //when user clicks show watchlist link
-$("#show-watchlist").click(function() {
+$("#show-unwatched").click(function() {
 	movieFactory.getUserMovies()
-
 		.then((movieData) => {
-			// console.log("movieData", movieData);
+			console.log("movieData", movieData);
 			$.each(movieData, (index, movie) => {
-				console.log("movie", movie.watched);
-				// console.log("watched?", movie.watched);
-				// let searchWatchlist = builder.searchMoviesToDOM(movieData);
-		  //       $("#DOM-element").html(searchWatchlist);
+				if(movie.watched === false) {
+					console.log("movie", movie.cast);
+					// console.log("watched?", movie.watched);
+					let searchWatchlist = builder.searchMoviesToDOM(movieData);
+			        $("#DOM-element").html(searchWatchlist);
+		   		 }
 		    });
 		});
 	// movieController.buildMovieObj(title, year, movieId, currentUser, castArr, poster_path);
@@ -70,10 +74,34 @@ $("#show-watchlist").click(function() {
 
 $(document).on("click", ".star", function() {
 	let thisStarIndex = $(this).attr("id").split("-");
+	let starMovieId = thisStarIndex[0];
 	for (let i = 1; i <= thisStarIndex[2]; i++) {
 		document.getElementById(`${thisStarIndex[0]}-star-${i}`).classList.add("rated");
 	}
+	movieFactory.getUserMovies()
+		.then((movieData) => {
+			console.log("movieData", movieData);
+			$.each(movieData, (index, movie) => {
+				if(movie.id === starMovieId) {
+					console.log("movie id", movie.id);
+					console.log("star movie id", starMovieId);
+					console.log("star index", thisStarIndex[2]);
+					movie.rating = thisStarIndex[2];
+					movie.watched = true;
+
+					movieFactory.updateMovie()
+					// // console.log("watched?", movie.watched);
+					// let searchWatchlist = builder.searchMoviesToDOM(movieData);
+			  //       $("#DOM-element").html(searchWatchlist);
+					
+		   		 }
+		    });
+	});
 });
+
+
+
+
 
 
 
