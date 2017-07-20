@@ -11,11 +11,11 @@
 							<h3 id="{{id}}-title" class="card-title">{{title}}</h3>
   						<h6 id="{{id}}-date" class="card-subtitle">{{release_date}}</h6>
   						<h5 class="card-title cast">Cast:</h5>
-  						<p id="{{id}}-cast">{{cast}}
-{{!--   						{{#each cast}}
-    						<p>{{this}}</p>
-    					{{/each}} --}}
-    					</p>
+{{!--   						<p id="{{id}}-cast">{{cast}} --}}
+  						{{#each cast}}
+    						<p class="{{../id}}-cast">{{this}}</p>
+    					{{/each}}
+{{!--     					</p> --}}
     						<a class="add-watchlist" data-add-watch="{{id}}" href="#">Add to Watchlist</a>
     				</div>
   				</div>

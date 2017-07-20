@@ -37,13 +37,16 @@ $("#logItOut").click( function() {
 // when user clicks Add to Watchlist link on movie card
 $(document).on("click", ".add-watchlist", function() {
 	console.log("clicked add to Watchlist");
+	let castArr = [];
 	let movieId = $(this).data("add-watch");
 	let title = $(`#${movieId}-title`).text();
 	let year = $(`#${movieId}-date`).text();
 	let currentUser = firebase.auth().currentUser.uid;
-	let cast = $(`#${movieId}-cast`).text();
+	$(`.${movieId}-cast`).each( function() {
+		castArr.push($(this).text());
+	});
 	let poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
-	movieController.buildMovieObj(title, year, movieId, currentUser, cast, poster_path);
+	movieController.buildMovieObj(title, year, movieId, currentUser, castArr, poster_path);
 });
 
 
