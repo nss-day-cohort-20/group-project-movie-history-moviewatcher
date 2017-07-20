@@ -1,10 +1,5 @@
 @import "../lib/node_modules/bootstrap/scss/bootstrap.scss";
 
-.test {
-	font-size: 3em;
-	color: blue;
-}
-
 p {
 	margin: 0;
 }
@@ -13,6 +8,7 @@ p {
 
 #search-movies {
 	margin-top: 25px;
+	margin-bottom: 30px;
 }
 
 .logout {
@@ -24,16 +20,13 @@ ul {
 	list-style-type: none;
 }
 
-.hideIt {
-	display: none;
-}
-
 /***** show lists bar *****/
 
 .show-bar {
 	height: 50px;
 	border: 1px solid #000;
 	margin-right: 0;
+	margin-top: 30px;
 }
 
 .log {
@@ -42,6 +35,11 @@ ul {
 
 h1 {
 	margin: 10px 20px 30px 20px;
+	display: inline;
+}
+
+.subtitle {
+	display: inline;
 }
 
 /***** movie display *****/
@@ -63,4 +61,32 @@ h1 {
 .date {
 	margin-bottom: 15px;
 }
+
+.star {
+	font-size: 1.5em;
+	letter-spacing: -.35em;
+	color: #cbcbcb;
+	display: inline;
+	cursor: pointer;
+}
+
+.rated {
+	color: #ffd700;
+}
+
+.hideIt {
+	display: none;
+}
+
+.delete {
+	cursor: pointer;
+	float: right;
+	font-size: 1.5em;
+	color: #cbcbcb;
+}
+
+.cast {
+	margin-top: 10px;
+}
+
 

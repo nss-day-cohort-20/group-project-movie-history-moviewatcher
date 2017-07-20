@@ -4,14 +4,14 @@ let $ = require('jquery');
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
-module.exports.buildMovieObj = (title, year, movieId, currentUser, cast, poster_path) => {
+module.exports.buildMovieObj = (title, year, movieId, currentUser, castArr, poster_path) => {
 	let movieObj = {
 		title: title,
 		release_date: year,
         id: movieId,
 		userId: currentUser,
-        cast: cast,
         poster_path: poster_path,
+        castArr: castArr,
         watched: false
 	};
     console.log("movieObj", movieObj);
@@ -41,11 +41,12 @@ module.exports.searchForNewMovies = function () {
         });
 };
 
-
-$("#search-new-movies").click(function() {
-	// console.log("search button working", moviesToUse);
-	// module.exports.noResults();
-	module.exports.searchForNewMovies();
+$("#search-movies").keypress((e)=>{
+    if(e.which == 13){
+        module.exports.searchForNewMovies();
+        $("#search-movies").val("");
+        $("#subtitle-search").removeClass("hideIt");
+    }
 });
 
 module.exports.noResults = function() {
