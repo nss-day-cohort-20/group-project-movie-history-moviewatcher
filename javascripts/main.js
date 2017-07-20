@@ -14,7 +14,7 @@ $("#logItIn").click( function() {
 	.then( (result) => {
 		let user = result.user.uid;
 		console.log("user", user);
-		// songController.loadSongsToDom();
+		// movieController.loadSongsToDom(); when users have movies in their watchlist and watched it
 		$("#logItOut").removeClass("hideIt");
 		$(".messagePostLogin").removeClass("hideIt");
 	});
@@ -29,19 +29,21 @@ $("#logItOut").click( function() {
 	$("#logItIn").removeClass("hideIt");
 	$(".messagePreLogin").removeClass("hideIt");
 	}).catch(function(error) {
-	// An error happened.
+		console.log("an error happened");
 	});
 });
 
 
-//in progress - need to pass info along to buildObj function
-
-//when user clicks Add to Watchlist link on movie card
+// when user clicks Add to Watchlist link on movie card
 $(document).on("click", ".add-watchlist", function() {
 	console.log("clicked add to Watchlist");
 	let movieId = $(this).data("add-watch");
-	console.log("movieId", movieId);
-	movieController.buildMovieObj();
+	let title = $(`#${movieId}-title`).text();
+	let year = $(`#${movieId}-date`).text();
+	let currentUser = firebase.auth().currentUser.uid;
+	let cast = $(`#${movieId}-cast`).text();
+	let poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
+	movieController.buildMovieObj(title, year, movieId, currentUser, cast, poster_path);
 });
 
 

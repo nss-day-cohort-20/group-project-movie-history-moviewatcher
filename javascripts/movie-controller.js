@@ -4,18 +4,17 @@ let $ = require('jquery');
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
-//in progress
-
-module.exports.buildMovieObj = () => {
+module.exports.buildMovieObj = (title, year, movieId, currentUser, cast, poster_path) => {
 	let movieObj = {
-		// title: `$(this).data("title")`,
-		// year:
-		// cast:
-		// userId:
-		// movieId:
-		// imageURL:
+		title: title,
+		release_date: year,
+        id: movieId,
+		userId: currentUser,
+        cast: cast,
+        poster_path: poster_path,
+        watched: false
 	};
-	// console.log($(this).data("title"));
+    console.log("movieObj", movieObj);
 	return movieObj;
 };
 
@@ -35,8 +34,10 @@ module.exports.searchForNewMovies = function () {
         	console.log("moviesToUse", moviesToUse);
         	for(let i = 0; i < 20; i++) {
         		moviesToUse.results[i].cast = cast[i];
+                moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
-            // templatebuilder!!!!
+            let searchMovies = builder.searchMoviesToDOM(moviesToUse.results);
+            $("#DOM-element").html(searchMovies);
         });
 };
 

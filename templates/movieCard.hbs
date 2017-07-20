@@ -1,21 +1,22 @@
+
+
+
+
+
 <div class="row">
-{{#each movie}}
-<div data-movie-id="{{id}}" class="col-md-4"><!-- the 4 creates row of three cards -->
+{{#each movies}}
+<div class="col-md-4"><!-- row of three cards -->
 	<div class="col-md-12 movie-card"><!-- inside card so there is auto margin -->
 		<div class="row"><!-- row for poster and movie info -->
-			<div class="col-md-5 poster"><img src="{{poster_path}}"></div><!-- poster -->
+			<div class="col-md-5 poster"><img src="http://image.tmdb.org/t/p/{{poster_path}}"></div><!-- poster -->
 			<div class="col-md-7 movie-info"><!-- movie info -->
-				<h3 data-title={{title}} class="movie-info">{{title}}</h3>
-				<p class="movie-info">{{year}}r</p>
-        <p class="movie-info">
-
-    {{!--   work in progress --}}
-        {{#each actor}}
-				{{this}}
+				<h4 class="movie-info movie-title">{{title}}</h4>
+				<h5 class="movie-info movie-year">{{release_date}}</h5>
+        {{#each cast}}
+				<p class="movie-info movie-actor">{{this}}</p>
         {{/each}}
-        </p>
 				<div class="starsNstuff" data-watched-status="{{watched}}">
-          {{#if {{watched}} }}
+{{!--           {{#if {{watched}} }}
             <ul>
               <li class="star" id="{{id}}-1">Star</li>
               <li class="star" id="{{id}}-2">Star</li>
@@ -24,10 +25,10 @@
               <li class="star" id="{{id}}-5">Star</li>
             </ul>
           {{else if {{watched}} === false}}
-            <a id="watched-it" href="#">Watched It</a>
-          {{else}}
+            <a id="watched-it" data-add-watch="{{id}}" href="#">Watched It</a>
+          {{else}} --}}
             <a class="add-watchlist" data-add-watch="{{id}}" href="#">Add to Watchlist</a>
-          {{/if}}
+{{!--           {{/if}} --}}
         </div><!-- area for stars and links -->
 			</div><!-- /.col-sm-7 -->
 		</div><!-- /.row -->
