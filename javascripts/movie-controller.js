@@ -6,18 +6,15 @@ let builder = require('./template-builder.js');
 
 //in progress
 
-module.exports.buildMovieObj = () => {
-	let movieObj = {
-		// title: `$(this).data("title")`,
-		// year:
-		// cast:
-		// userId:
-		// movieId:
-		// imageURL:
-	};
-	// console.log($(this).data("title"));
-	return movieObj;
-};
+// module.exports.buildMovieObj = (title, year, userId, movieId) => {
+// 	let movieObj = {
+// 		title: title,
+// 		year: year,
+// 		userId: userId,
+// 		movieId: movieId,
+// 	};
+// 	return movieObj;
+// };
 
 module.exports.searchForNewMovies = function () {
 	console.log("search working");
@@ -36,7 +33,8 @@ module.exports.searchForNewMovies = function () {
         	for(let i = 0; i < 20; i++) {
         		moviesToUse.results[i].cast = cast[i];
         	}
-            // templatebuilder!!!!
+            let searchMovies = builder.searchMoviesToDOM(moviesToUse.results);
+            $("#DOM-element").html(searchMovies);
         });
 };
 

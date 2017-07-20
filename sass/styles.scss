@@ -1,5 +1,9 @@
 @import "../lib/node_modules/bootstrap/scss/bootstrap.scss";
 
+p {
+	margin: 0;
+}
+
 /***** nav *****/
 
 #search-movies {
@@ -27,9 +31,9 @@ ul {
 	margin-right: 0;
 }
 
-	p {
-		margin-top: 13px;
-	}
+.log {
+	margin-top: 13px;
+}
 
 h1 {
 	margin: 10px 20px 30px 20px;
@@ -41,23 +45,13 @@ h1 {
 	margin-top: 30px;
 }
 
-.movie-card {
-	height: 250px;
-	border: 1px solid #000;
-	padding-top: 25px;
-	position: relative;
+.card {
+	height: 275px;
+	margin: 20px;
+	width: 30rem;
 }
 
-// .movie-info {
-// 	height: 250px;
-// }
-
-.starsNstuff {
-	height: 50px;
-	border: 1px solid #000;
-	position: absolute;
-	bottom: 26px;
-	right: -1px;
-	width: 100%;
+.movie-info {
+	padding-left: 10px;
 }
 

@@ -1,0 +1,23 @@
+<div class="row">
+	{{#each movies}}
+		<div class="card">
+			<div class="card-block">
+				<div class="row">
+					<div class="col-md-4">
+						<img src="http://image.tmdb.org/t/p/w154/{{poster_path}}">
+					</div>
+					<div class="col-md-8 movie-info">
+						<div class="col-md-12">
+							<h3 class="card-title">{{title}}</h3>
+  						<h6 class="card-subtitle">{{release_date}}</h6>
+  						{{#each cast}}
+    						<p class="card-text">{{this}}</p>
+    					{{/each}}
+    					<a class="add-watchlist" data-add-watch="{{id}}" href="#">Add to Watchlist</a>
+    				</div>
+  				</div>
+  			</div>
+  		</div>
+		</div>
+	{{/each}}
+</div>
