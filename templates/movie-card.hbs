@@ -4,23 +4,37 @@
 			<div class="card-block">
 				<div class="row">
 					<div class="col-md-4">
+					{{#if poster_path}}
 						<img alt="{{id}}-image" src="http://image.tmdb.org/t/p/w154/{{poster_path}}">
+						{{else}}
+						<img src="../images/no-poster.jpg" width="154">
+					{{/if}}
 					</div>
 					<div class="col-md-8 movie-info">
 						<div class="col-md-12">
+							<p class="delete" id="{{id}}-delete">✗</p>
 							<h3 id="{{id}}-title" class="card-title">{{title}}</h3>
   						<h6 id="{{id}}-date" class="card-subtitle">{{release_date}}</h6>
   						<h5 class="card-title cast">Cast:</h5>
-  						{{#each cast}}
-    						<p class="{{../id}}-cast">{{this}}</p>
-    					{{/each}}
+  						{{#if cast}}
+  							{{#each cast}}
+    							<p class="{{../id}}-cast">{{this}}</p>
+    						{{/each}}
+    					{{else}}
+    						<p>No cast available</p>
+    					{{/if}}
     					{{#if userId }}
     							{{#if watched}}
-            		<p class="test">★</p>
-            		<p class="test">★</p>
-            		<p class="test">★</p>
-            		<p class="test">★</p>
-            		<p class="test">★</p>
+            		<p id="{{id}}-star-1" class="star">★</p>
+            		<p id="{{id}}-star-2" class="star">★</p>
+            		<p id="{{id}}-star-3" class="star">★</p>
+            		<p id="{{id}}-star-4" class="star">★</p>
+            		<p id="{{id}}-star-5" class="star">★</p>
+            		<p id="{{id}}-star-6" class="star">★</p>
+            		<p id="{{id}}-star-7" class="star">★</p>
+            		<p id="{{id}}-star-8" class="star">★</p>
+            		<p id="{{id}}-star-9" class="star">★</p>
+            		<p id="{{id}}-star-10" class="star">★</p>
             			{{else}}
             		<a id="watched-it" data-add-watch="{{id}}" href="#">Watched It</a>
             		{{/if}}

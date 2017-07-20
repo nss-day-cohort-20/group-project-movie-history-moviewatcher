@@ -41,9 +41,11 @@ module.exports.searchForNewMovies = function () {
         });
 };
 
-
-$("#search-new-movies").click(function() {
-	// console.log("search button working", moviesToUse);
-	module.exports.searchForNewMovies();
+$("#search-movies").keypress((e)=>{
+    if(e.which == 13){
+        module.exports.searchForNewMovies();
+        $("#search-movies").val("");
+        $("#subtitle-search").removeClass("hideIt");
+    }
 });
 

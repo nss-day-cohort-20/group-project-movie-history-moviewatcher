@@ -49,6 +49,12 @@ $(document).on("click", ".add-watchlist", function() {
 	movieController.buildMovieObj(title, year, movieId, currentUser, castArr, poster_path);
 });
 
+$(document).on("click", ".star", function() {
+	let thisStarIndex = $(this).attr("id").split("-");
+	for (let i = 1; i <= thisStarIndex[2]; i++) {
+		document.getElementById(`${thisStarIndex[0]}-star-${i}`).classList.add("rated");
+	}
+});
 
 
 
