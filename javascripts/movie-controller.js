@@ -32,6 +32,7 @@ module.exports.searchForNewMovies = function () {
         	console.log("moviesToUse", moviesToUse);
         	for(let i = 0; i < 20; i++) {
         		moviesToUse.results[i].cast = cast[i];
+                moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
             let searchMovies = builder.searchMoviesToDOM(moviesToUse.results);
             $("#DOM-element").html(searchMovies);
