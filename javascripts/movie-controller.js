@@ -44,6 +44,21 @@ module.exports.searchForNewMovies = function () {
 
 $("#search-new-movies").click(function() {
 	// console.log("search button working", moviesToUse);
+	// module.exports.noResults();
 	module.exports.searchForNewMovies();
 });
 
+module.exports.noResults = function() {
+	if ($("#search-movies:empty").val) {
+		alert("You must enter text to search");
+	}
+};
+
+// $(document).on("click", ".add-watchlist", function() {
+//     let movieObj = module.exports.buildMovieObj();
+//     movieFactory.addMovie(movieObj);
+//     console.log("working", movieObj);
+//     // .then( (songId) => {
+//         // module.exports.loadSongsToDom();
+//     // });
+// });

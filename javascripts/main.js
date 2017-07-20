@@ -6,6 +6,8 @@ let bootstrap = ('../lib/node_modules/bootstrap/dist/js/bootstrap.min.js');
 let userFactory = require('./user-factory');
 let firebase = require("./firebaseConfig");
 let movieController = require("./movie-controller");
+let movieFactory = require('./movie-factory.js');
+let builder = require('./template-builder.js');
 
 $("#logItIn").click( function() {
 	$("#logItIn").addClass("hideIt");
@@ -43,9 +45,26 @@ $(document).on("click", ".add-watchlist", function() {
 	let currentUser = firebase.auth().currentUser.uid;
 	let cast = $(`#${movieId}-cast`).text();
 	let poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
-	movieController.buildMovieObj(title, year, movieId, currentUser, cast, poster_path);
+	//toggle "add to watch list" to "watched"
+	movieFactory.addMovie(movieController.buildMovieObj(title, year, movieId, currentUser, cast, poster_path));
 });
 
+//when user clicks show watchlist link
+$("#show-watchlist").click(function() {
+	movieFactory.getUserMovies()
+
+		.then((movieData) => {
+			// console.log("movieData", movieData);
+			$.each(movieData, (index, movie) => {
+				console.log("movie", movie.watched);
+				// console.log("watched?", movie.watched);
+				// let searchWatchlist = builder.searchMoviesToDOM(movieData);
+		  //       $("#DOM-element").html(searchWatchlist);
+		    });
+
+
+		});
+});
 
 
 
