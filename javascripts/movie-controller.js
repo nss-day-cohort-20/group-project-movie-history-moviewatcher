@@ -11,7 +11,8 @@ module.exports.buildMovieObj = (title, year, movieId, currentUser, cast, poster_
         id: movieId,
 		userId: currentUser,
         cast: cast,
-        poster_path: poster_path
+        poster_path: poster_path,
+        watched: false
 	};
     console.log("movieObj", movieObj);
 	return movieObj;
