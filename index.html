@@ -11,10 +11,6 @@
   			<div class="col-sm-8">
       		<div class="search-methods">
        	 		<input id="search-movies" type="text" class="form-control" placeholder="Find New Movies or Search Your Own">
-        		<ul>
-        			<li class="text-right"><a id="search-new-movies" href="#">Find New Movies</a></li>
-        			<li class="text-right"><a id="search-saved-movies" href="#">Search Your Movies</a></li>
-        		</ul>
       		</div><!-- /.search-methods -->
       	</div><!-- /.col-sm-8 -->
       	<div class="col-sm-4">
@@ -25,14 +21,24 @@
     </div><!-- /.container -->
   </nav>
   <div class="container">
-  	<h1>Movie History</h1>
+  	<h1 class="title">Movie History</h1>
+    <h4 id="subtitle-search" class="subtitle hideIt">Search Results</h4>
+    <h4 id="subtitle-unwatch" class="subtitle hideIt">Unwatched</h4>
+    <h4 id="subtitle-watched" class="subtitle hideIt">Watched</h4>
+    <h4 id="subtitle-fave" class="subtitle hideIt">Favorites</h4>
   	<div class="row">
   		<div class="col-sm-3 show-bar">
-  			<p class="text-center"><a id="show-watchlist" href="#">Show Watchlist</a></p>
+  			<p class="text-center"><a id="show-untracked" href="#">Show Untracked</a></p>
   		</div>
   		<div class="col-sm-3 show-bar">
-  			<p class="text-center"><a id="show-watched" href="#">Show Watched</a></p>
+  			<p class="text-center"><a id="show-unwatched" href="#">Show Unwatched</a></p>
   		</div>
+      <div class="col-sm-3 show-bar">
+        <p class="text-center"><a id="show-watched" href="#">Show Watched</a></p>
+      </div>
+      <div class="col-sm-3 show-bar">
+        <p class="text-center"><a id="show-favorites" href="#">Show Favorites</a></p>
+      </div>
   	</div><!-- /.row -->
   </div><!-- /.container -->
   <div id="DOM-element" class="container">
@@ -43,7 +49,16 @@
       </div>
 
   </div><!-- /.container -->
-  <p class="test">★★★★★</p>
+    <p id="id-star-1" class="star">★</p>
+    <p id="id-star-2" class="star">★</p>
+    <p id="id-star-3" class="star">★</p>
+    <p id="id-star-4" class="star">★</p>
+    <p id="id-star-5" class="star">★</p>
+    <p id="id-star-6" class="star">★</p>
+    <p id="id-star-7" class="star">★</p>
+    <p id="id-star-8" class="star">★</p>
+    <p id="id-star-9" class="star">★</p>
+    <p id="id-star-10" class="star">★</p>
   <!-- required for bootsrap 4 -->
   <script src="../lib/node_modules/tether/dist/js/tether.min.js"></script>
 	<script src="dist/app.js"></script>
