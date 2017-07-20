@@ -49,7 +49,7 @@ $(document).on("click", ".add-watchlist", function() {
 	});
 	let poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
 	//toggle "add to watch list" to "watched"
-	movieFactory.addMovie(movieController.buildMovieObj(title, year, movieId, currentUser, cast, poster_path));
+	movieFactory.addMovie(movieController.buildMovieObj(title, year, movieId, currentUser, castArr, poster_path));
 });
 
 //when user clicks show watchlist link
