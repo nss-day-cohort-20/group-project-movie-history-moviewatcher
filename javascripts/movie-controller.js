@@ -32,7 +32,9 @@ module.exports.searchForNewMovies = function () {
         })
         .then((cast)=>{
         	console.log("moviesToUse", moviesToUse);
-        	for(let i = 0; i < 20; i++) {
+            let lengthToUse = moviesToUse.results.length < 20 ? moviesToUse.results.length : 20;
+            // console.log("moviesToUseLength", );
+        	for(let i = 0; i < lengthToUse; i++) {
         		moviesToUse.results[i].cast = cast[i];
                 moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
