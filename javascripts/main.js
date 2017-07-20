@@ -34,15 +34,17 @@ $("#logItOut").click( function() {
 });
 
 
-//when user clicks Add to Watchlist link on movie card
-// $(document).on("click", ".add-watchlist", function() {
-// 	console.log("clicked add to Watchlist");
-// 	let movieId = $(this).data("add-watch");
-// 	let title = $("h3").text();
-// 	let year = $("h4").text();
+// when user clicks Add to Watchlist link on movie card
+$(document).on("click", ".add-watchlist", function() {
 
-// 	movieController.buildMovieObj(title, year, movieId);
-// });
+	console.log("clicked add to Watchlist");
+	let movieId = $(this).data("add-watch");
+	let title = $(`#${movieId}-title`).text();
+	let year = $(`#${movieId}-date`).text();
+	let currentUser = firebase.auth().currentUser.uid;
+
+	// movieController.buildMovieObj(title, year, movieId, currentUser, castArr);
+});
 
 
 
