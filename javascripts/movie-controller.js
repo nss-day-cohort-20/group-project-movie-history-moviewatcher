@@ -4,17 +4,18 @@ let $ = require('jquery');
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
-//in progress
-
-// module.exports.buildMovieObj = (title, year, userId, movieId) => {
-// 	let movieObj = {
-// 		title: title,
-// 		year: year,
-// 		userId: userId,
-// 		movieId: movieId,
-// 	};
-// 	return movieObj;
-// };
+module.exports.buildMovieObj = (title, year, movieId, currentUser, cast, poster_path) => {
+	let movieObj = {
+		title: title,
+		release_date: year,
+        id: movieId,
+		userId: currentUser,
+        cast: cast,
+        poster_path: poster_path
+	};
+    console.log("movieObj", movieObj);
+	return movieObj;
+};
 
 module.exports.searchForNewMovies = function () {
 	console.log("search working");
