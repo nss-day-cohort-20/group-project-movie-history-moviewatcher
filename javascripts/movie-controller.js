@@ -49,3 +49,17 @@ $("#search-movies").keypress((e)=>{
     }
 });
 
+module.exports.noResults = function() {
+	if ($("#search-movies:empty").val) {
+		alert("You must enter text to search");
+	}
+};
+
+// $(document).on("click", ".add-watchlist", function() {
+//     let movieObj = module.exports.buildMovieObj();
+//     movieFactory.addMovie(movieObj);
+//     console.log("working", movieObj);
+//     // .then( (songId) => {
+//         // module.exports.loadSongsToDom();
+//     // });
+// });

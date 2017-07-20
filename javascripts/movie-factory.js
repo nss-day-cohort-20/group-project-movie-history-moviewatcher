@@ -2,6 +2,8 @@
 
 let $ = require('jquery');
 let mdbConfig = require('./mdbGetter')();
+let fbURL = 'https://moviewatcher-movie-history.firebaseio.com';
+let firebase = require("./firebaseConfig");
 
 module.exports.getMovies = () => {
   return new Promise( ( resolve, reject) => {
@@ -29,4 +31,30 @@ module.exports.getCast = function (movieId){
             resolve(castNames);
         });
     });
+};
+
+module.exports.addMovie = (movieFormObj) => {
+  return new Promise ((resolve, reject) => {
+    // let currentUser = firebase.auth().currentUser.uid;
+    // songFormObj.uid = currentUser;
+    $.ajax({
+      url: `${fbURL}/movies.json`, 
+      type: "POST", 
+      data: JSON.stringify(movieFormObj),
+      dataType: "json"
+    }).done((movieId) => {
+      resolve(movieId);
+    });
+  });
+};
+
+module.exports.getUserMovies = () => {
+  return new Promise( ( resolve, reject) => {
+    let currentUser = firebase.auth().currentUser.uid;
+    $.ajax({
+      url: `${fbURL}/movies.json?orderBy="userId"&equalTo="${currentUser}"`
+    }).done( (movieData) => {
+      resolve(movieData);
+    });
+  });
 };
