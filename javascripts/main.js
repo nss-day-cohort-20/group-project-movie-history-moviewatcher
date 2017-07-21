@@ -9,11 +9,14 @@ let movieController = require("./movie-controller");
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
+
+
 $("#logItIn").click( function() {
 	$("#logItIn").addClass("hideIt");
 	$(".messagePreLogin").addClass("hideIt");
 	userFactory.logInGoogle()
 	.then( (result) => {
+		$("#search-movies").prop("disabled", false);
 		let user = result.user.uid;
 		console.log("user", user);
 		// movieController.loadSongsToDom(); when users have movies in their watchlist and watched it
@@ -88,12 +91,11 @@ $(document).on("click", ".star", function() {
 					console.log("star index", thisStarIndex[2]);
 					movie.rating = thisStarIndex[2];
 					movie.watched = true;
-
-					movieFactory.updateMovie()
+					movieFactory.updateMovie();
 					// // console.log("watched?", movie.watched);
 					// let searchWatchlist = builder.searchMoviesToDOM(movieData);
 			  //       $("#DOM-element").html(searchWatchlist);
-					
+
 		   		 }
 		    });
 	});
