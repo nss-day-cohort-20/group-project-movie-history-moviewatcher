@@ -1,6 +1,7 @@
 "use strict";
 
 let $ = require('jquery');
+let mdbConfig = require('./mdbGetter')();
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
@@ -24,6 +25,7 @@ module.exports.searchForNewMovies = function () {
     var moviesToUse = [];
     movieFactory.getMovies()
         .then((movies) => {
+            console.log("movies", movies);
             moviesToUse = movies;
             let promiseArr = [];
             movies.results.forEach((movie) => {
@@ -39,17 +41,17 @@ module.exports.searchForNewMovies = function () {
         		moviesToUse.results[i].cast = cast[i];
                 moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
-        	movieFactory.getUserMovies()
-        	.then((firebaseMovies) => {
-        		let matchedMovies = [];
-        		$.each(firebaseMovies, (index, movie) => {
-					if(movie.title.toLowerCase().includes($("#search-movies").val().toLowerCase())) {
-						matchedMovies.push(movie);
-			   		 }
-						let completedTemplate = builder.searchMoviesToDOM(matchedMovies);
-		          		$("#DOM-element").html(completedTemplate);	
-		 	   });
-        	});
+     //    	movieFactory.getUserMovies()
+     //    	.then((firebaseMovies) => {
+     //    		let matchedMovies = [];
+     //    		$.each(firebaseMovies, (index, movie) => {
+					// if(movie.title.toLowerCase().includes($("#search-movies").val().toLowerCase())) {
+					// 	matchedMovies.push(movie);
+			  //  		 }
+					// 	let completedTemplate = builder.searchMoviesToDOM(matchedMovies);
+		   //        		$("#DOM-element").html(completedTemplate);	
+		 	 //   });
+     //    	});
         	
         });
 };
