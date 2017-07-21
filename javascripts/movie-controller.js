@@ -39,36 +39,16 @@ module.exports.searchForNewMovies = function () {
         		moviesToUse.results[i].cast = cast[i];
                 moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
-            // console.log("moviesToUse", moviesToUse.results);
-        
         	movieFactory.getUserMovies()
         	.then((firebaseMovies) => {
-
-        		// let reg = new RegExp($("#search-movies").val(), "i");
         		let matchedMovies = [];
-
         		$.each(firebaseMovies, (index, movie) => {
-
-	      			// console.log("firebase title", movie.title);
-	      			// console.log("user search", $("#search-movies").val());
-
 					if(movie.title.toLowerCase().includes($("#search-movies").val().toLowerCase())) {
-						// console.log("match made", movie.title, $("#search-movies").val());
-						// console.log(movie);
 						matchedMovies.push(movie);
 			   		 }
 						let completedTemplate = builder.searchMoviesToDOM(matchedMovies);
-		          		$("#DOM-element").html(completedTemplate);
-						
-		    });
-
-
-
-        		// console.log("firebase", firebaseMovies);
-        		// console.log("api", moviesToUse.results);
-        		// filter firebaseMovies out of moviesToUse
-        		// let searchMovies = builder.searchMoviesToDOM(firebaseMovies);
-          // 		$("#DOM-element").html(searchMovies);
+		          		$("#DOM-element").html(completedTemplate);	
+		 	   });
         	});
         	
         });
