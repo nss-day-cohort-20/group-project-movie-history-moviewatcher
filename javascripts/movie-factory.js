@@ -59,17 +59,35 @@ module.exports.getUserMovies = () => {
   });
 };
 
-module.exports.updateMovie = (rating, watchStatus) => {
-	return new Promise( ( resolve, reject) => {
-    let currentUser = firebase.auth().currentUser.uid;
-    $.ajax({
-      url: `${fbURL}/movies.json?orderBy="userId"&equalTo="${currentUser}"`,
-      type: 'PATCH',
-      data: JSON.stringify(rating, watchStatus),
-      dataType: "json"
-    }).done( (movieData) => {
-      resolve(movieData);
+// module.exports.getSearchedUserMovies = () => {
+//   return new Promise( ( resolve, reject) => {
+//     let currentUser = firebase.auth().currentUser.uid;
+//     // songFormObj.uid = currentUser;
+//     let userSearch = $("#search-movies").val();
+//     $.ajax({
+//       url: `${fbURL}/movies.json?orderBy="userId"&equalTo="${currentUser}"&equalTo="${userSearch}"`
+//     }).done( (movieData) => {
+//       resolve(movieData);
+//     });
+//   });
+// };
 
-    });
-  });
-}
+
+
+
+
+
+// module.exports.updateMovie = (movie, ) => {
+// 	return new Promise( ( resolve, reject) => {
+//     let currentUser = firebase.auth().currentUser.uid;
+//     $.ajax({
+//       url: `${fbURL}/movies.json?orderBy="userId"&equalTo="${currentUser}"`,
+//       type: 'PATCH',
+//       data: JSON.stringify(rating, watchStatus),
+//       dataType: "json"
+//     }).done( (movieData) => {
+//       resolve(movieData);
+
+//     });
+//   });
+// };

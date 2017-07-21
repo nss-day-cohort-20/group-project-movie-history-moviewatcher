@@ -40,6 +40,7 @@ $("#logItOut").click( function() {
 $(document).on("click", ".add-watchlist", function() {
 	console.log("clicked add to Watchlist");
 	let castArr = [];
+	// let key = Object.keys();
 	let movieId = $(this).data("add-watch");
 	let title = $(`#${movieId}-title`).text();
 	let year = $(`#${movieId}-date`).text();
@@ -60,6 +61,7 @@ $("#show-unwatched").click(function() {
 	movieFactory.getUserMovies()
 		.then((movieData) => {
 			console.log("movieData", movieData);
+			console.log("object key?", Object.keys(movieData));
 			$.each(movieData, (index, movie) => {
 				if(movie.watched === false) {
 					console.log("movie", movie.cast);
@@ -80,16 +82,16 @@ $(document).on("click", ".star", function() {
 	}
 	movieFactory.getUserMovies()
 		.then((movieData) => {
-			console.log("movieData", movieData);
+			// console.log("movieData", movieData);
 			$.each(movieData, (index, movie) => {
 				if(movie.id === starMovieId) {
-					console.log("movie id", movie.id);
-					console.log("star movie id", starMovieId);
-					console.log("star index", thisStarIndex[2]);
+					// console.log("movie id", movie.id);
+					// console.log("star movie id", starMovieId);
+					// console.log("star index", thisStarIndex[2]);
 					movie.rating = thisStarIndex[2];
 					movie.watched = true;
 
-					movieFactory.updateMovie()
+					movieFactory.updateMovie();
 					// // console.log("watched?", movie.watched);
 					// let searchWatchlist = builder.searchMoviesToDOM(movieData);
 			  //       $("#DOM-element").html(searchWatchlist);
