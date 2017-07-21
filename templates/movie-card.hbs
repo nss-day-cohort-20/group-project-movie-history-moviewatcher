@@ -23,8 +23,8 @@
     					{{else}}
     						<p>No cast available</p>
     					{{/if}}
-    					{{#if userId }}
-    							{{#if watched}}
+    				
+    					<div id="{{id}}-star-container" class="hideIt">
             		<p id="{{id}}-star-1" class="star">★</p>
             		<p id="{{id}}-star-2" class="star">★</p>
             		<p id="{{id}}-star-3" class="star">★</p>
@@ -35,12 +35,12 @@
             		<p id="{{id}}-star-8" class="star">★</p>
             		<p id="{{id}}-star-9" class="star">★</p>
             		<p id="{{id}}-star-10" class="star">★</p>
-            			{{else}}
-            		<a id="watched-it" data-add-watch="{{id}}" href="#">Watched It</a>
-            		{{/if}}
-            	{{else}}
-    						<a class="add-watchlist" data-add-watch="{{id}}" href="#">Add to Watchlist</a>
-    					{{/if}}
+            	</div>	
+            		
+            	
+            	
+    						<a class="add-watchlist" id="{{id}}-add-watchlist" data-add-watch="{{id}}" href="#">Add to Watchlist</a>
+    					
     				</div>
   				</div>
   			</div>

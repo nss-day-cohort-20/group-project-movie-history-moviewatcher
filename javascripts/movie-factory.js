@@ -58,3 +58,18 @@ module.exports.getUserMovies = () => {
     });
   });
 };
+
+module.exports.updateMovie = (rating, watchStatus) => {
+	return new Promise( ( resolve, reject) => {
+    let currentUser = firebase.auth().currentUser.uid;
+    $.ajax({
+      url: `${fbURL}/movies.json?orderBy="userId"&equalTo="${currentUser}"`,
+      type: 'PATCH',
+      data: JSON.stringify(rating, watchStatus),
+      dataType: "json"
+    }).done( (movieData) => {
+      resolve(movieData);
+
+    });
+  });
+}
