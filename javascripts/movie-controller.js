@@ -4,8 +4,9 @@ let $ = require('jquery');
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
-module.exports.buildMovieObj = (title, year, movieId, currentUser, castArr, poster_path) => {
+module.exports.buildMovieObj = (key, title, year, movieId, currentUser, castArr, poster_path) => {
 	let movieObj = {
+		key: key,
 		title: title,
 		release_date: year,
         id: movieId,
@@ -30,23 +31,33 @@ module.exports.searchForNewMovies = function () {
             });
             return Promise.all(promiseArr);
         })
-        .then((cast)=>{
-        	console.log("moviesToUse", moviesToUse);
+        .then((cast)=> {
+        	// console.log("moviesToUse", moviesToUse);
             let lengthToUse = moviesToUse.results.length < 20 ? moviesToUse.results.length : 20;
             // console.log("moviesToUseLength", );
         	for(let i = 0; i < lengthToUse; i++) {
         		moviesToUse.results[i].cast = cast[i];
                 moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
-            let searchMovies = builder.searchMoviesToDOM(moviesToUse.results);
-            $("#DOM-element").html(searchMovies);
+        	movieFactory.getUserMovies()
+        	.then((firebaseMovies) => {
+        		let matchedMovies = [];
+        		$.each(firebaseMovies, (index, movie) => {
+					if(movie.title.toLowerCase().includes($("#search-movies").val().toLowerCase())) {
+						matchedMovies.push(movie);
+			   		 }
+						let completedTemplate = builder.searchMoviesToDOM(matchedMovies);
+		          		$("#DOM-element").html(completedTemplate);	
+		 	   });
+        	});
+        	
         });
 };
 
 $("#search-movies").keypress((e)=>{
     if(e.which == 13){
         module.exports.searchForNewMovies();
-        $("#search-movies").val("");
+        // $("#search-movies").val("");
         $("#subtitle-search").removeClass("hideIt");
     }
 });
