@@ -38,8 +38,8 @@ module.exports.addMovie = (movieFormObj) => {
     // let currentUser = firebase.auth().currentUser.uid;
     // songFormObj.uid = currentUser;
     $.ajax({
-      url: `${fbURL}/movies.json`, 
-      type: "POST", 
+      url: `${fbURL}/movies.json`,
+      type: "POST",
       data: JSON.stringify(movieFormObj),
       dataType: "json"
     }).done((movieId) => {
@@ -72,4 +72,4 @@ module.exports.updateMovie = (rating, watchStatus) => {
 
     });
   });
-}
+};

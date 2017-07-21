@@ -9,11 +9,14 @@ let movieController = require("./movie-controller");
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
+
+
 $("#logItIn").click( function() {
 	$("#logItIn").addClass("hideIt");
 	$(".messagePreLogin").addClass("hideIt");
 	userFactory.logInGoogle()
 	.then( (result) => {
+		$("#search-movies").prop("disabled", false);
 		let user = result.user.uid;
 		console.log("user", user);
 		// movieController.loadSongsToDom(); when users have movies in their watchlist and watched it
@@ -47,7 +50,13 @@ $(document).on("click", ".add-watchlist", function() {
 	$(`.${movieId}-cast`).each( function() {
 		castArr.push($(this).text());
 	});
-	let poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
+	let poster_path;
+  if ($(`img[alt=${movieId}-image]`).attr("src")) {
+    poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
+  }
+  else {
+  	poster_path = null;
+  }
 	movieFactory.addMovie(movieController.buildMovieObj(title, year, movieId, currentUser, castArr, poster_path));
 	$(`#${movieId}-add-watchlist`).addClass("hideIt");
 	$(`#${movieId}-star-container`).removeClass("hideIt");
@@ -88,12 +97,11 @@ $(document).on("click", ".star", function() {
 					console.log("star index", thisStarIndex[2]);
 					movie.rating = thisStarIndex[2];
 					movie.watched = true;
-
-					movieFactory.updateMovie()
+					movieFactory.updateMovie();
 					// // console.log("watched?", movie.watched);
 					// let searchWatchlist = builder.searchMoviesToDOM(movieData);
 			  //       $("#DOM-element").html(searchWatchlist);
-					
+
 		   		 }
 		    });
 	});
