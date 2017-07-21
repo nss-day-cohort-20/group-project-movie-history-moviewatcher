@@ -50,7 +50,13 @@ $(document).on("click", ".add-watchlist", function() {
 	$(`.${movieId}-cast`).each( function() {
 		castArr.push($(this).text());
 	});
-	let poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
+	let poster_path;
+  if ($(`img[alt=${movieId}-image]`).attr("src")) {
+    poster_path = $(`img[alt=${movieId}-image]`).attr("src").split("http://image.tmdb.org/t/p/w154/").pop();
+  }
+  else {
+  	poster_path = null;
+  }
 	movieFactory.addMovie(movieController.buildMovieObj(title, year, movieId, currentUser, castArr, poster_path));
 	$(`#${movieId}-add-watchlist`).addClass("hideIt");
 	$(`#${movieId}-star-container`).removeClass("hideIt");
