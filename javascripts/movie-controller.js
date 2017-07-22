@@ -39,21 +39,24 @@ module.exports.searchForNewMovies = function () {
             // console.log("moviesToUseLength", );
         	for(let i = 0; i < lengthToUse; i++) {
         		moviesToUse.results[i].cast = cast[i];
+                //limits date to display only release year
                 moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
+
+            //todo get movies to display in dom vvvvv
      //    	movieFactory.getUserMovies()
-     //    	.then((firebaseMovies) => {
+     //    	.then( (firebaseMovies) => {
      //    		let matchedMovies = [];
      //    		$.each(firebaseMovies, (index, movie) => {
 					// if(movie.title.toLowerCase().includes($("#search-movies").val().toLowerCase())) {
 					// 	matchedMovies.push(movie);
 			  //  		 }
-					// 	let completedTemplate = builder.searchMoviesToDOM(matchedMovies);
-		   //        		$("#DOM-element").html(completedTemplate);	
-		 	 //   });
-     //    	});
+						let completedTemplate = builder.searchMoviesToDOM(moviesToUse.results);
+		          		$("#DOM-element").html(completedTemplate);	
+		 	   });
+        	// });
         	
-        });
+        // });
 };
 
 $("#search-movies").keypress((e)=>{
