@@ -1,6 +1,7 @@
 "use strict";
 
 let $ = require('jquery');
+let mdbConfig = require('./mdbGetter')();
 let movieFactory = require('./movie-factory.js');
 let builder = require('./template-builder.js');
 
@@ -24,6 +25,7 @@ module.exports.searchForNewMovies = function () {
     var moviesToUse = [];
     movieFactory.getMovies()
         .then((movies) => {
+            console.log("movies", movies);
             moviesToUse = movies;
             let promiseArr = [];
             movies.results.forEach((movie) => {
@@ -37,21 +39,24 @@ module.exports.searchForNewMovies = function () {
             // console.log("moviesToUseLength", );
         	for(let i = 0; i < lengthToUse; i++) {
         		moviesToUse.results[i].cast = cast[i];
+                //limits date to display only release year
                 moviesToUse.results[i].release_date = moviesToUse.results[i].release_date.substring(0,4);
         	}
-        	movieFactory.getUserMovies()
-        	.then((firebaseMovies) => {
-        		let matchedMovies = [];
-        		$.each(firebaseMovies, (index, movie) => {
-					if(movie.title.toLowerCase().includes($("#search-movies").val().toLowerCase())) {
-						matchedMovies.push(movie);
-			   		 }
-						let completedTemplate = builder.searchMoviesToDOM(matchedMovies);
+
+            //todo get movies to display in dom vvvvv
+     //    	movieFactory.getUserMovies()
+     //    	.then( (firebaseMovies) => {
+     //    		let matchedMovies = [];
+     //    		$.each(firebaseMovies, (index, movie) => {
+					// if(movie.title.toLowerCase().includes($("#search-movies").val().toLowerCase())) {
+					// 	matchedMovies.push(movie);
+			  //  		 }
+						let completedTemplate = builder.searchMoviesToDOM(moviesToUse.results);
 		          		$("#DOM-element").html(completedTemplate);	
 		 	   });
-        	});
+        	// });
         	
-        });
+        // });
 };
 
 $("#search-movies").keypress((e)=>{

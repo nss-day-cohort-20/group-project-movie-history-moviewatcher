@@ -2,7 +2,7 @@
 
 let $ = require('jquery');
 let mdbConfig = require('./mdbGetter')();
-let fbURL = 'https://moviewatcher-movie-history.firebaseio.com';
+let fbURL = 'https://movie-history-5c89a.firebaseio.com/';
 let firebase = require("./firebaseConfig");
 
 module.exports.getMovies = () => {
